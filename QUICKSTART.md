@@ -46,6 +46,10 @@ docker build -t twitter-scraper .
 docker run -v $(pwd)/output:/app/output twitter-scraper
 ```
 
+### Option 5: VPS / Cloud Server
+
+For deploying on a VPS (DigitalOcean, AWS, Vultr, Linode, etc.), see the complete **[VPS Setup Guide](VPS_SETUP_GUIDE.md)**.
+
 ## First Run
 
 ### Example 1: Simple Search

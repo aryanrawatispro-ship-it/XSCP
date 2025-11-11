@@ -56,6 +56,16 @@ A powerful Python-based Twitter scraper that replicates Octoparse functionality 
    python -c "from selenium import webdriver; print('Selenium installed successfully')"
    ```
 
+### VPS / Cloud Deployment
+
+For deploying on a VPS (DigitalOcean, AWS, Vultr, etc.), see the comprehensive **[VPS Setup Guide](VPS_SETUP_GUIDE.md)** which includes:
+- Complete server setup from scratch
+- Installing all dependencies on Ubuntu
+- Running in headless mode
+- Scheduling with cron jobs
+- Managing cookies securely
+- Monitoring and troubleshooting
+
 ## Quick Start
 
 ### Basic Usage
