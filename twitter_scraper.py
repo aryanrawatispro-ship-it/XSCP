@@ -64,6 +64,27 @@ class TwitterAdvancedScraper:
             '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         )
 
+        # Proxy support
+        proxy_config = self.config.get('proxy')
+        if proxy_config:
+            if isinstance(proxy_config, dict):
+                # Handle dict format: {'host': 'ip', 'port': 'port', 'username': 'user', 'password': 'pass'}
+                host = proxy_config.get('host')
+                port = proxy_config.get('port')
+                username = proxy_config.get('username')
+                password = proxy_config.get('password')
+
+                if username and password:
+                    proxy_str = f"{username}:{password}@{host}:{port}"
+                else:
+                    proxy_str = f"{host}:{port}"
+            else:
+                # Handle string format: "host:port" or "username:password@host:port"
+                proxy_str = proxy_config
+
+            chrome_options.add_argument(f'--proxy-server={proxy_str}')
+            self.logger.info(f"Using proxy: {proxy_str.split('@')[-1]}")  # Log without credentials
+
         # Initialize driver
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.implicitly_wait(10)

@@ -13,6 +13,20 @@ SCRAPER_CONFIG = {
     # Authentication
     'cookies_file': None,  # Path to cookies JSON file (e.g., 'twitter_cookies.json')
 
+    # Proxy settings (optional)
+    # Option 1: Simple proxy (no auth)
+    # 'proxy': '123.456.789.0:8080'
+    # Option 2: Proxy with authentication
+    # 'proxy': 'username:password@123.456.789.0:8080'
+    # Option 3: Dict format
+    # 'proxy': {
+    #     'host': '123.456.789.0',
+    #     'port': '8080',
+    #     'username': 'user',  # Optional
+    #     'password': 'pass'   # Optional
+    # }
+    'proxy': None,
+
     # Optional: Chrome driver path (leave None to use system PATH)
     'chrome_driver_path': None,
 }
@@ -97,4 +111,21 @@ EXAMPLE_ADVANCED_SEARCH = {
     'search_type': 'Top',
     'exclude_replies': True,
     'max_tweets': 2000,
+}
+
+# Example 5: Using proxy
+EXAMPLE_WITH_PROXY = {
+    'config': {
+        'headless': True,
+        'scroll_loops': 15,
+        'proxy': '123.456.789.0:8080',  # Simple proxy
+        # Or with auth: 'proxy': 'user:pass@123.456.789.0:8080'
+    },
+    'search': {
+        'keywords': 'trending topic',
+        'start_date': '2024-01-01',
+        'end_date': '2024-01-31',
+        'search_type': 'Latest',
+        'max_tweets': 500,
+    }
 }

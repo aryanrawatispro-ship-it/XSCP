@@ -5,6 +5,7 @@ A powerful Python-based Twitter scraper that replicates Octoparse functionality 
 ## Features
 
 ### Core Functionality
+- ✅ **Interactive CLI Mode**: No coding required - just run and answer questions!
 - ✅ **Advanced Search Support**: Full Twitter Advanced Search URL structure
 - ✅ **Keyword Filtering**: Support for ANY, ALL, NONE, and exact phrase matching
 - ✅ **Date Range Filtering**: Scrape tweets within specific date ranges
@@ -13,6 +14,7 @@ A powerful Python-based Twitter scraper that replicates Octoparse functionality 
 - ✅ **Time-Splitting Modes**: Split large date ranges by day/week/month for better coverage
 - ✅ **Auto-Scroll**: Infinite scroll to capture all available tweets
 - ✅ **Authentication Support**: Load Twitter cookies for full access
+- ✅ **Proxy Support**: HTTP/HTTPS/SOCKS5 proxies with authentication
 
 ### Data Extraction
 - Tweet text/content
@@ -68,7 +70,24 @@ For deploying on a VPS (DigitalOcean, AWS, Vultr, etc.), see the comprehensive *
 
 ## Quick Start
 
-### Basic Usage
+### Interactive Mode (Easiest Way!)
+
+**No coding required!** Just run the interactive CLI and answer simple questions:
+
+```bash
+python interactive_scraper.py
+```
+
+The interactive mode will guide you through:
+- Keywords and search parameters
+- Date ranges and filters
+- Proxy configuration (optional)
+- Cookie authentication (optional)
+- Output file settings
+
+Perfect for beginners or quick one-off scrapes!
+
+### Basic Usage (Python Code)
 
 ```python
 from twitter_scraper import TwitterAdvancedScraper
@@ -197,7 +216,55 @@ For full access to Twitter (recommended for better results):
    scraper.run(...)
    ```
 
-### 3. Headless Mode (Cloud Deployment)
+### 3. Proxy Support
+
+Use proxies to avoid rate limiting, access from different locations, or maintain anonymity:
+
+**Simple proxy (no authentication):**
+```python
+config = {
+    'proxy': '123.456.789.0:8080',
+    'headless': True,
+    'scroll_loops': 15,
+}
+
+scraper = TwitterAdvancedScraper(config)
+scraper.run(...)
+```
+
+**Proxy with authentication:**
+```python
+config = {
+    'proxy': 'username:password@123.456.789.0:8080',
+    'headless': True,
+}
+```
+
+**Dict format (more flexible):**
+```python
+config = {
+    'proxy': {
+        'host': '123.456.789.0',
+        'port': '8080',
+        'username': 'user',  # Optional
+        'password': 'pass'   # Optional
+    }
+}
+```
+
+**Proxy types supported:**
+- HTTP/HTTPS proxies
+- SOCKS5 proxies (use format: `socks5://host:port`)
+- Authenticated proxies
+- Rotating proxy services
+
+**Use cases:**
+- Bypass rate limiting
+- Access from specific geographic locations
+- Rotate IPs for large scraping operations
+- Maintain privacy
+
+### 4. Headless Mode (Cloud Deployment)
 
 Run the scraper without a visible browser window:
 

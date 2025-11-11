@@ -2,6 +2,28 @@
 
 Get started with Twitter Advanced Search Scraper in 5 minutes!
 
+## 🚀 Super Easy Mode - Interactive CLI (Recommended for Beginners!)
+
+**No coding required! Just run and answer questions:**
+
+```bash
+# Install dependencies first (one-time setup)
+pip install -r requirements.txt
+
+# Run the interactive scraper
+python interactive_scraper.py
+```
+
+The interactive mode will ask you simple questions like:
+- What keywords do you want to search?
+- What date range?
+- Do you want to use a proxy?
+- Minimum likes/retweets?
+
+Then it automatically runs everything for you! 🎉
+
+---
+
 ## Installation (Choose One)
 
 ### Option 1: Automated Setup (Linux/Mac)
@@ -194,6 +216,40 @@ config = {
     'scroll_loops': 20,
 }
 ```
+
+## Proxy Support
+
+Use proxies to avoid rate limiting or access from different locations:
+
+**Simple proxy (no authentication):**
+```python
+config = {
+    'proxy': '123.456.789.0:8080',
+    'headless': True,
+}
+```
+
+**Proxy with authentication:**
+```python
+config = {
+    'proxy': 'username:password@123.456.789.0:8080',
+    'headless': True,
+}
+```
+
+**Dict format (alternative):**
+```python
+config = {
+    'proxy': {
+        'host': '123.456.789.0',
+        'port': '8080',
+        'username': 'user',  # Optional
+        'password': 'pass'   # Optional
+    }
+}
+```
+
+Note: The interactive CLI (`interactive_scraper.py`) makes proxy setup even easier!
 
 ## Troubleshooting
 
