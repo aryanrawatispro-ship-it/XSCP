@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  twitter-scraper:
+    build: .
+    container_name: twitter-scraper
+    volumes:
+      # Mount output directory
+      - ./output:/app/output
+      # Mount cookies file if it exists
+      - ./twitter_cookies.json:/app/twitter_cookies.json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Override command to run specific example
+    # command: python example_usage.py 1
+    shm_size: 2gb  # Increase shared memory for Chrome
